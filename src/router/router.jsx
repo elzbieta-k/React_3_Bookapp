@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/search",
-        element: <SearchPage />
+        element: <SearchPage />,
       },
       {
         path: "/toread",
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/finished",
-        element: <FinishedBooksPage />
+        element: <FinishedBooksPage />,
       },
       {
         path: "/book/:bookId",
@@ -46,6 +46,7 @@ const router = createBrowserRouter([
     path: "*",
     element: <p>404 page not found</p>,
   },
+  { basename: "/React_3_Bookapp" },
 ]);
 
 export default router;
