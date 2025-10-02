@@ -12,7 +12,7 @@ export default function BookListPage({ fetchUrl }) {
   useEffect(() => {
     setCurrentUrl(fetchUrl);
   }, [fetchUrl]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -40,9 +40,10 @@ export default function BookListPage({ fetchUrl }) {
     fetchData();
   }, [currentUrl]);
 
-  if (loading) return <p>loading</p>;
+  // if (loading) return <p>loading</p>;
   return (
     <>
+      {loading && <img src="../public/loading.png" alt="Loading image" />}
       <div>
         {books.map((book) => (
           <BookCard key={book.id} book={book} />

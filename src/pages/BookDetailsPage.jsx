@@ -19,34 +19,40 @@ export default function BookDetailsPage() {
 
   return (
     <div>
-      <p>Book details for book med id {bookId}</p>
-      <p>{book.title}</p>
-      <button onClick={() => addToRead(book)}>Add to read list</button>
-      {/* <div>
-        <label htmlFor="">
-          Rate this book:
-          <select
-            value={rating}
-            onChange={(e) => setRating(Number(e.target.value))}
-          >
-            <option value={0}>Choose rating</option>
-            <option value={1}>⭐</option>
-            <option value={2}>⭐⭐</option>
-            <option value={3}>⭐⭐⭐</option>
-            <option value={4}>⭐⭐⭐⭐</option>
-            <option value={5}>⭐⭐⭐⭐⭐</option>
-          </select>
-        </label>
-        <button onClick={handleFinish}>Mark as finished</button>
-      </div> */}
+      {/* <p>Book details for book med id {bookId}</p> */}
       <div>
-        <div style={{ marginTop: "1rem" }}>
-          <p>Rate this book:</p>
-          <Rating value={rating} onChange={setRating} />
-          <button onClick={handleFinish} disabled={rating === 0}>
-            Mark as Finished
-          </button>
-        </div>
+        <img src={book.formats["image/jpeg"]} alt="Book cover" />
+        <button onClick={() => addToRead(book)}>Add to read list</button>
+      </div>
+      <div style={{ marginTop: "1rem" }}>
+        <p>Rate this book:</p>
+        <Rating value={rating} onChange={setRating} />
+        <button onClick={handleFinish} disabled={rating === 0}>
+          Mark as Finished
+        </button>
+      </div>
+      <div>
+        <h2>{book.title || "No title"}</h2>
+        <p>
+          by{" "}
+          {book.authors && book.authors.length > 0
+            ? book.authors.map((a) => a.name).join(", ")
+            : "Unknown author"} 
+        </p>
+        <h4>Category:</h4>
+        {book.bookshelves.map((i) => (
+          <span>{i.replace("Category: ", "")}</span>
+        ))}
+        <p>{book.summaries[0].replace("(This is an automatically generated summary.)", "")}</p>
+        <p>Downloaded: {book.download_count} times</p>
+        <p>
+          Language:{" "}
+          {book.languages.map((lang) => (
+            <span>{lang} </span>
+          ))}
+        </p>
+
+        <a href={book.formats["text/html"]} target="blank">Read the book online: </a>
       </div>
     </div>
   );

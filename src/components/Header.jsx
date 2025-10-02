@@ -35,21 +35,10 @@ export default function Header() {
           <button>Browse ▾</button>
           <div className="dropdown-content">
             {categories.map((category) => (
-              <Link to={`/category/${category}.toLowerCase()`}>
+              <Link to={`/category/${category.toLowerCase()}`}>
                 {category}{" "}
               </Link>
             ))}
-            {/* <NavLink to="/category/fiction">Fiction</NavLink>
-            <NavLink to="/category/mystery">Mystery</NavLink>
-            <NavLink to="/category/thriller">Thriller</NavLink>
-            <NavLink to="/category/romance">Romance</NavLink>
-            <NavLink to="/category/fantasy">Fantasy</NavLink>
-            <NavLink to="/category/morality">Morality</NavLink>
-            <NavLink to="/category/power">Power</NavLink>
-            <NavLink to="/category/adventure">Adventure</NavLink>
-            <NavLink to="/category/tragedy">Tragedy</NavLink>
-            <NavLink to="/category/war">War</NavLink>
-            <NavLink to="/category/philosophy">Philosophy</NavLink> */}
           </div>
         </div>
         <NavLink to="/toread">To Read</NavLink>
