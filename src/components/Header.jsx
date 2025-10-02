@@ -1,9 +1,25 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Header() {
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState("");
+
+  const categories = [
+    "Fiction",
+    "Mystery",
+    "Thriller",
+    "Romance",
+    "Fantasy",
+    "Morality",
+    "Society",
+    "Power",
+    "Justice",
+    "Adventure",
+    "Tragedy",
+    "War",
+    "Philosophy",
+  ];
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -18,7 +34,12 @@ export default function Header() {
         <div className="dropdown">
           <button>Browse ▾</button>
           <div className="dropdown-content">
-            <NavLink to="/category/fiction">Fiction</NavLink>
+            {categories.map((category) => (
+              <Link to={`/category/${category}.toLowerCase()`}>
+                {category}{" "}
+              </Link>
+            ))}
+            {/* <NavLink to="/category/fiction">Fiction</NavLink>
             <NavLink to="/category/mystery">Mystery</NavLink>
             <NavLink to="/category/thriller">Thriller</NavLink>
             <NavLink to="/category/romance">Romance</NavLink>
@@ -28,7 +49,7 @@ export default function Header() {
             <NavLink to="/category/adventure">Adventure</NavLink>
             <NavLink to="/category/tragedy">Tragedy</NavLink>
             <NavLink to="/category/war">War</NavLink>
-            <NavLink to="/category/philosophy">Philosophy</NavLink>
+            <NavLink to="/category/philosophy">Philosophy</NavLink> */}
           </div>
         </div>
         <NavLink to="/toread">To Read</NavLink>

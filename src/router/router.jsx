@@ -10,43 +10,45 @@ import FinishedBooksPage from "../pages/FinishedBooksPage.jsx";
 import SearchPage from "../pages/SearchPage.jsx";
 import CategoryPage from "../pages/CategoryPage.jsx";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <p>error</p>,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "/category/:topic",
-        element: <CategoryPage />,
-      },
-      {
-        path: "/search",
-        element: <SearchPage />,
-      },
-      {
-        path: "/toread",
-        element: <ToReadPage />,
-      },
-      {
-        path: "/finished",
-        element: <FinishedBooksPage />,
-      },
-      {
-        path: "/book/:bookId",
-        element: <BookDetailsPage />,
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <p>404 page not found</p>,
-  },
-  { basename: "/React_3_Bookapp" },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      errorElement: <p>error</p>,
+      children: [
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "category/:topic",
+          element: <CategoryPage />,
+        },
+        {
+          path: "search",
+          element: <SearchPage />,
+        },
+        {
+          path: "toread",
+          element: <ToReadPage />,
+        },
+        {
+          path: "finished",
+          element: <FinishedBooksPage />,
+        },
+        {
+          path: "book/:bookId",
+          element: <BookDetailsPage />,
+        },
+      ],
+    },
+    {
+      path: "*",
+      element: <p>404 page not found</p>,
+    },
+  ],
+  { basename: import.meta.env.BASE_URL }
+);
 
 export default router;
