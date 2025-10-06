@@ -1,11 +1,5 @@
-import BookListPage from "./BookListPage";
+import BookListPage from "../components/BookList";
 
 export default function HomePage() {
-
-    
-    return (
-        <BookListPage
-          fetchUrl={"https://gutendex.com/books"}
-        />
-      );
+  return <BookListPage fetchUrl={"https://gutendex.com/books"} />;
 }

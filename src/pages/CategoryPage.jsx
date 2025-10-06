@@ -1,4 +1,4 @@
-import BookListPage from "./BookListPage";
+import BookListPage from "../components/BookList";
 import { useParams } from "react-router-dom";
 
 export default function CategoryPage() {

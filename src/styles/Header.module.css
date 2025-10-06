@@ -1,0 +1,9 @@
+.header {
+    width: 100vw;
+    margin: 30px 20px;
+    display: flex;
+    flex-direction: row;
+gap: 40px;
+flex-wrap: wrap;
+
+}

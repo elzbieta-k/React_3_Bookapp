@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import BookCard from "../components/BookCard.jsx";
+import BookCard from "./BookCard.jsx";
+import styles from "../styles/BookListPage.module.css";
 
 export default function BookListPage({ fetchUrl }) {
   const [books, setBooks] = useState([]);
@@ -42,19 +43,28 @@ export default function BookListPage({ fetchUrl }) {
 
   // if (loading) return <p>loading</p>;
   return (
-    <>
-      {loading && <img src="../public/loading.png" alt="Loading image" />}
+    <main className={styles.bookListMain}>
       <div>
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
+        {loading && (
+          <img
+            src={`${import.meta.env.BASE_URL}vite.svg`}
+            alt="Loading image"
+          />
+        )}
+        <div className={styles.bookCardContainer}>
+          {books.map((book) => (
+            <BookCard key={book.id} book={book} />
+          ))}
+        </div>
       </div>
-      <button disabled={!prevPage} onClick={() => setCurrentUrl(prevPage)}>
-        Prev
-      </button>
-      <button disabled={!nextPage} onClick={() => setCurrentUrl(nextPage)}>
-        Next
-      </button>
-    </>
+      <div>
+        <button disabled={!prevPage} onClick={() => setCurrentUrl(prevPage)}>
+          Prev
+        </button>
+        <button disabled={!nextPage} onClick={() => setCurrentUrl(nextPage)}>
+          Next
+        </button>
+      </div>
+    </main>
   );
 }

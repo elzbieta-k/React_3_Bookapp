@@ -1,5 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import styles from "../styles/Header.module.css";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -27,23 +28,9 @@ export default function Header() {
       navigate(`/search?q=${encodeURIComponent(searchValue)}`);
     }
   };
+
   return (
-    <header>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <div className="dropdown">
-          <button>Browse ▾</button>
-          <div className="dropdown-content">
-            {categories.map((category) => (
-              <Link to={`/category/${category.toLowerCase()}`}>
-                {category}{" "}
-              </Link>
-            ))}
-          </div>
-        </div>
-        <NavLink to="/toread">To Read</NavLink>
-        <NavLink to="/finished">Finished</NavLink>
-      </nav>
+    <header className={styles.header}>
       <form role="search" onSubmit={handleSearch}>
         <label htmlFor="search-input">Search for books</label>
         <input
@@ -57,6 +44,21 @@ export default function Header() {
         />
         <button type="submit">Search</button>
       </form>
+      <nav>
+        <NavLink to="/">Home</NavLink>
+        <div className="dropdown">
+          <button>Browse ▾</button>
+          <div className="dropdown-content">
+            {categories.map((category) => (
+              <Link key={category} to={`/category/${category.toLowerCase()}`}>
+                {category}{" "}
+              </Link>
+            ))}
+          </div>
+        </div>
+        <NavLink to="/toread">To Read</NavLink>
+        <NavLink to="/finished">Finished</NavLink>
+      </nav>
     </header>
   );
 }

@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import styles from "../styles/BookCard.module.css";
 
 export default function BookCard({ book }) {
   return (
-    <>
-      <Link to={`/book/${book.id}`} state={{ book }}>
+    <article className={styles.bookCard}>
+      <Link className={styles.navLink} to={`/book/${book.id}`} state={{ book }}>
         <img src={book.formats["image/jpeg"]} alt="" />
-        <p>{book.title}</p>
+        <h3 className={styles.bookTitle}>{book.title}</h3>
         <p>
           by{" "}
           {book.authors && book.authors.length > 0
@@ -13,6 +14,6 @@ export default function BookCard({ book }) {
             : "Unknown author"}
         </p>
       </Link>
-    </>
+    </article>
   );
 }

@@ -2,6 +2,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useBooks } from "../context/BooksContext.jsx";
 import Rating from "../components/Rating.jsx";
+import styles from "../styles/BookDetailsPage.module.css";
 
 export default function BookDetailsPage() {
   const { bookId } = useParams();
@@ -18,32 +19,41 @@ export default function BookDetailsPage() {
   };
 
   return (
-    <div>
+    <div className={styles.bookContainer}>
       {/* <p>Book details for book med id {bookId}</p> */}
-      <div>
+      <div className={styles.leftSide}>
         <img src={book.formats["image/jpeg"]} alt="Book cover" />
         <button onClick={() => addToRead(book)}>Add to read list</button>
+        <div style={{ marginTop: "1rem" }}>
+          <p>Rate this book:</p>
+          <Rating value={rating} onChange={setRating} />
+          <button onClick={handleFinish} disabled={rating === 0}>
+            Mark as Finished
+          </button>
+        </div>
       </div>
-      <div style={{ marginTop: "1rem" }}>
-        <p>Rate this book:</p>
-        <Rating value={rating} onChange={setRating} />
-        <button onClick={handleFinish} disabled={rating === 0}>
-          Mark as Finished
-        </button>
-      </div>
-      <div>
+      <div className={styles.rightSide}>
         <h2>{book.title || "No title"}</h2>
         <p>
           by{" "}
           {book.authors && book.authors.length > 0
             ? book.authors.map((a) => a.name).join(", ")
-            : "Unknown author"} 
+            : "Unknown author"}
         </p>
         <h4>Category:</h4>
-        {book.bookshelves.map((i) => (
-          <span>{i.replace("Category: ", "")}</span>
-        ))}
-        <p>{book.summaries[0].replace("(This is an automatically generated summary.)", "")}</p>
+        <div className={styles.categoryContainer}>
+          {book.bookshelves.map((i) => (
+            <span className={styles.categorySpan}>
+              {i.replace("Category: ", "")}
+            </span>
+          ))}
+        </div>
+        <p>
+          {book.summaries[0].replace(
+            "(This is an automatically generated summary.)",
+            ""
+          )}
+        </p>
         <p>Downloaded: {book.download_count} times</p>
         <p>
           Language:{" "}
@@ -52,7 +62,9 @@ export default function BookDetailsPage() {
           ))}
         </p>
 
-        <a href={book.formats["text/html"]} target="blank">Read the book online: </a>
+        <a href={book.formats["text/html"]} target="blank">
+          Read the book online:{" "}
+        </a>
       </div>
     </div>
   );
