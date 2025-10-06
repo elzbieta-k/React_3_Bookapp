@@ -1,15 +1,16 @@
 import { useLocation } from "react-router-dom";
-import BookListPage from "../components/BookList";
+import BookList from "../components/BookList.jsx";
 
 export default function SearchPage() {
   const location = useLocation();
   const query = new URLSearchParams(location.search).get("q");
 
   return (
-    <BookListPage
+    <BookList
       fetchUrl={`https://gutendex.com/books/?search=${encodeURIComponent(
         query
       )}`}
+      title={`Search results for: ${query}`}
     />
   );
 }

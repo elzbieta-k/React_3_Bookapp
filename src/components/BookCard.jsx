@@ -6,7 +6,9 @@ export default function BookCard({ book }) {
     <article className={styles.bookCard}>
       <Link className={styles.navLink} to={`/book/${book.id}`} state={{ book }}>
         <img src={book.formats["image/jpeg"]} alt="" />
-        <h3 className={styles.bookTitle}>{book.title}</h3>
+        <h3 className={styles.bookTitle} title={book.title}>
+          {book.title}
+        </h3>
         <p>
           by{" "}
           {book.authors && book.authors.length > 0

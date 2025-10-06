@@ -20,14 +20,13 @@ export default function BookDetailsPage() {
 
   return (
     <div className={styles.bookContainer}>
-      {/* <p>Book details for book med id {bookId}</p> */}
       <div className={styles.leftSide}>
         <img src={book.formats["image/jpeg"]} alt="Book cover" />
-        <button onClick={() => addToRead(book)}>Add to read list</button>
+        <button className="button" onClick={() => addToRead(book)}>Add to read list</button>
         <div style={{ marginTop: "1rem" }}>
           <p>Rate this book:</p>
           <Rating value={rating} onChange={setRating} />
-          <button onClick={handleFinish} disabled={rating === 0}>
+          <button className="button" onClick={handleFinish} disabled={rating === 0}>
             Mark as Finished
           </button>
         </div>
@@ -43,7 +42,7 @@ export default function BookDetailsPage() {
         <h4>Category:</h4>
         <div className={styles.categoryContainer}>
           {book.bookshelves.map((i) => (
-            <span className={styles.categorySpan}>
+            <span key={i}className={styles.categorySpan}>
               {i.replace("Category: ", "")}
             </span>
           ))}
@@ -57,8 +56,8 @@ export default function BookDetailsPage() {
         <p>Downloaded: {book.download_count} times</p>
         <p>
           Language:{" "}
-          {book.languages.map((lang) => (
-            <span>{lang} </span>
+          {book.languages.map((lang, i) => (
+            <span key={i}>{lang} </span>
           ))}
         </p>
 

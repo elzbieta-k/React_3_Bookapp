@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import BookCard from "./BookCard.jsx";
-import styles from "../styles/BookListPage.module.css";
+import styles from "../styles/BookList.module.css";
+import BookSwiper from "./BookSwiper.jsx";
 
-export default function BookListPage({ fetchUrl }) {
+export default function BookList({ fetchUrl, title }) {
   const [books, setBooks] = useState([]);
   const [nextPage, setNextPage] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
@@ -44,24 +44,19 @@ export default function BookListPage({ fetchUrl }) {
   // if (loading) return <p>loading</p>;
   return (
     <main className={styles.bookListMain}>
-      <div>
-        {loading && (
-          <img
-            src={`${import.meta.env.BASE_URL}vite.svg`}
-            alt="Loading image"
-          />
-        )}
-        <div className={styles.bookCardContainer}>
-          {books.map((book) => (
-            <BookCard key={book.id} book={book} />
-          ))}
-        </div>
-      </div>
-      <div>
-        <button disabled={!prevPage} onClick={() => setCurrentUrl(prevPage)}>
+      {loading ? (
+        <img
+          src={`${import.meta.env.BASE_URL}/loading.png`}
+          alt="Loading image"
+        />
+      ) : (
+        <BookSwiper books={books} title={title} />
+      )}
+      <div className={styles.buttonsContainer}>
+        <button className="button" disabled={!prevPage} onClick={() => setCurrentUrl(prevPage)}>
           Prev
         </button>
-        <button disabled={!nextPage} onClick={() => setCurrentUrl(nextPage)}>
+        <button className="button" disabled={!nextPage} onClick={() => setCurrentUrl(nextPage)}>
           Next
         </button>
       </div>

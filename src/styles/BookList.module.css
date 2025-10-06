@@ -1,0 +1,17 @@
+/* .bookListMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+} */
+/* .bookCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+} */
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1%;
+}

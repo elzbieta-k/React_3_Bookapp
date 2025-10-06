@@ -1,12 +1,18 @@
 .bookCard {
-  /* width: 20%;
-  min-height: 30%; */
   background-color: #f0fff1;
   margin: 1% 0;
+  height: 400px;
+  width: 100%;
+  box-shadow: 0 0 10px #292f36;
+  border-radius: 3px
 }
 
+.bookCard img {
+  width: 100%;
+  height: 330px;
+}
 .navLink {
-  color: black;
+  color: #292F36;
   text-decoration: none;
 }
 
@@ -16,4 +22,9 @@
   text-overflow: ellipsis;
   max-width: 250px;
   display: block;
+}
+
+h3,
+p {
+  padding: 0 5px;
 }

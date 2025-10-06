@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 
 //Router components
 import App from "../App.jsx";
-import BookListPage from "../components/BookList.jsx";
 import ToReadPage from "../pages/ToReadPage.jsx";
 import HomePage from "../pages/HomePage.jsx";
 import BookDetailsPage from "../pages/BookDetailsPage.jsx";
