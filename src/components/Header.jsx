@@ -5,36 +5,51 @@ import styles from "../styles/Header.module.css";
 export default function Header() {
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState("");
+  const [categoryValue, setCategoryValue] = useState("");
 
   const categories = [
-    "Fiction",
-    "Mystery",
-    "Thriller",
-    "Romance",
-    "Fantasy",
-    "Morality",
-    "Society",
-    "Power",
-    "Justice",
-    "Adventure",
-    "Tragedy",
-    "War",
-    "Philosophy",
+    "all",
+    "fiction",
+    "mystery",
+    "thriller",
+    "romance",
+    "fantasy",
+    "morality",
+    "society",
+    "power",
+    "justice",
+    "adventure",
+    "tragedy",
+    "war",
+    "philosophy",
   ];
 
   const handleSearch = (e) => {
     e.preventDefault();
-    if (searchValue.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchValue)}`);
+    if (!searchValue.trim() && !categoryValue) return;
+
+    const query = searchValue.trim()
+      ? `q=${encodeURIComponent(searchValue)} `
+      : "";
+    const topic = categoryValue && categoryValue !== "all"
+      ? `topic=${encodeURIComponent(categoryValue)} `
+      : "";
+
+    const queryString = [query, topic].filter(Boolean).join("&");
+    {
+      navigate(`/search?${queryString}`);
     }
+    setSearchValue("");
   };
 
   return (
     <header className={styles.header}>
       <nav>
-        <Link className={styles.navLink} to="/">Home</Link>
+        <Link className={styles.navLink} to="/">
+          Home
+        </Link>
         <div className={styles.searchContainer}>
-          <div className={styles.dropdown}>
+          {/* <div className={styles.dropdown}>
             <button className={styles.categoryButton}>Search by category ▾</button>
             <div className={styles.dropdownContent}>
               {categories.map((category) => (
@@ -44,25 +59,40 @@ export default function Header() {
               ))}
             </div>
           </div>
-          <p>or</p>
+          <p>or</p> */}
           <form role="search" onSubmit={handleSearch}>
             {/* <label htmlFor="search-input">Search by author or title</label> */}
+            <select
+              value={categoryValue}
+              onChange={(e) => setCategoryValue(e.target.value)}
+            >
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category.toUpperCase()}
+                </option>
+              ))}
+            </select>
             <input
               type="search"
               id="search-input"
               name="q"
               aria-label="Search"
               placeholder="Search by author or title"
-              required
+              value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
             />
-            <button className="button" type="submit">Search</button>
+            <button className="button" type="submit">
+              Search
+            </button>
           </form>
-          
         </div>
         <div className={styles.listsContainer}>
-          <Link className={styles.navLink} to="/toread">To Read</Link>
-          <Link className={styles.navLink} to="/finished">Finished</Link>
+          <Link className={styles.navLink} to="/toread">
+            To Read
+          </Link>
+          <Link className={styles.navLink} to="/finished">
+            Finished
+          </Link>
         </div>
       </nav>
     </header>
