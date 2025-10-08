@@ -3,7 +3,7 @@ import BookCard from "../components/BookCard";
 import styles from "../styles/ReadFinishedPage.module.css";
 
 export default function FinishedBooksPage() {
-  const { finished } = useBooks();
+  const { finished, deleteBook } = useBooks();
 
   return (
     <div className={styles.listContainer}>
@@ -13,6 +13,12 @@ export default function FinishedBooksPage() {
           <span>
             My review: {book.rating ? "⭐".repeat(book.rating) : "No rating"}
           </span>
+          <button
+            className="button"
+            onClick={() => deleteBook(book.id, "finished")}
+          >
+            Delete
+          </button>
         </div>
       ))}
     </div>

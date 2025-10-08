@@ -31,15 +31,17 @@ export default function Header() {
     const query = searchValue.trim()
       ? `q=${encodeURIComponent(searchValue)} `
       : "";
-    const topic = categoryValue && categoryValue !== "all"
-      ? `topic=${encodeURIComponent(categoryValue)} `
-      : "";
+    const topic =
+      categoryValue && categoryValue !== "all"
+        ? `topic=${encodeURIComponent(categoryValue)} `
+        : "";
 
     const queryString = [query, topic].filter(Boolean).join("&");
     {
       navigate(`/search?${queryString}`);
     }
     setSearchValue("");
+    setCategoryValue("all")
   };
 
   return (
@@ -48,50 +50,39 @@ export default function Header() {
         <Link className={styles.navLink} to="/">
           Home
         </Link>
-        <div className={styles.searchContainer}>
-          {/* <div className={styles.dropdown}>
-            <button className={styles.categoryButton}>Search by category ▾</button>
-            <div className={styles.dropdownContent}>
-              {categories.map((category) => (
-                <Link className={styles.navLink} key={category} to={`/category/${category.toLowerCase()}`}>
-                  {category}{" "}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <p>or</p> */}
-          <form role="search" onSubmit={handleSearch}>
-            {/* <label htmlFor="search-input">Search by author or title</label> */}
-            <select
-              value={categoryValue}
-              onChange={(e) => setCategoryValue(e.target.value)}
-            >
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category.toUpperCase()}
-                </option>
-              ))}
-            </select>
-            <input
-              type="search"
-              id="search-input"
-              name="q"
-              aria-label="Search"
-              placeholder="Search by author or title"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-            />
-            <button className="button" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
+
+        <form role="search" onSubmit={handleSearch}>
+          <select
+            className={styles.categoryButton}
+            value={categoryValue}
+            onChange={(e) => setCategoryValue(e.target.value)}
+          >
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category.toUpperCase()}
+              </option>
+            ))}
+          </select>
+          <input
+            type="search"
+            id="search-input"
+            name="q"
+            aria-label="Search"
+            placeholder="Search by author or title"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+          <button className={styles.searchButton} type="submit">
+            Search
+          </button>
+        </form>
+
         <div className={styles.listsContainer}>
           <Link className={styles.navLink} to="/toread">
-            To Read
+            My shelf
           </Link>
           <Link className={styles.navLink} to="/finished">
-            Finished
+            Read & Rated
           </Link>
         </div>
       </nav>

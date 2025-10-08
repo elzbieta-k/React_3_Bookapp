@@ -4,7 +4,6 @@ import BookList from "../components/BookList.jsx";
 export default function SearchPage() {
   const location = useLocation();
   const query = new URLSearchParams(location.search).get("q");
-  // const { query } = useParams("q");
   const topic = new URLSearchParams(location.search).get("topic");
   console.log(query, topic);
   let apiUrl = "https://gutendex.com/books";
@@ -17,5 +16,12 @@ export default function SearchPage() {
     apiUrl += query ? `&topic=${topic}` : `?topic=${topic}`;
   }
 
-  return <BookList fetchUrl={apiUrl} title={`Search results for: ${query}`} />;
+  return (
+    <BookList
+      fetchUrl={apiUrl}
+      title={`Search results for: ${
+        topic === null ? "all categories" : topic
+      } ${query === null ? "" : "- " + query}`}
+    />
+  );
 }

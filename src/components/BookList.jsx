@@ -43,22 +43,35 @@ export default function BookList({ fetchUrl, title }) {
 
   // if (loading) return <p>loading</p>;
   return (
-    <main className={styles.bookListMain}>
-      {loading ? (
-        <img
-          src={`${import.meta.env.BASE_URL}/loading.png`}
-          alt="Loading image"
-        />
-      ) : (
-        <BookSwiper books={books} title={title} />
-      )}
-      <div className={styles.buttonsContainer}>
-        <button className="button" disabled={!prevPage} onClick={() => setCurrentUrl(prevPage)}>
-          Prev
-        </button>
-        <button className="button" disabled={!nextPage} onClick={() => setCurrentUrl(nextPage)}>
-          Next
-        </button>
+    <main>
+      <div className={styles.bookListMain}>
+        {loading ? (
+          <img
+            className={styles.loadingImg}
+            src={`${import.meta.env.BASE_URL}/loading.png`}
+            alt="Loading image"
+          />
+        ) : (
+          <>
+            <BookSwiper books={books} title={title} />
+            <div className={styles.buttonsContainer}>
+              <button
+                className="button"
+                disabled={!prevPage}
+                onClick={() => setCurrentUrl(prevPage)}
+              >
+                Prev
+              </button>
+              <button
+                className="button"
+                disabled={!nextPage}
+                onClick={() => setCurrentUrl(nextPage)}
+              >
+                Next
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </main>
   );

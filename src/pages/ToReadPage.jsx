@@ -10,7 +10,7 @@ export default function ToReadPage() {
       {toRead.map((book) => (
         <div className={styles.bookContainer}>
           <BookCard key={book.id} book={book} />
-          <button className="button" onClick={() => deleteBook(book.id)}>Delete</button>
+          <button className="button" onClick={() => deleteBook(book.id, "toRead")}>Delete</button>
         </div>
       ))}
     </div>

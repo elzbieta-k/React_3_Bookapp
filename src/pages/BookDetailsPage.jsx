@@ -3,38 +3,28 @@ import { useState } from "react";
 import { useBooks } from "../context/BooksContext.jsx";
 import Rating from "../components/Rating.jsx";
 import styles from "../styles/BookDetailsPage.module.css";
+import { FiExternalLink } from "react-icons/fi";
 
 export default function BookDetailsPage() {
-  const { bookId } = useParams();
+  // const { bookId } = useParams();
   const location = useLocation();
-  const { addToRead, markAsFinished } = useBooks();
+  const { addToRead, handleFinish, rating, setBookRating } = useBooks();
   const book = location.state?.book;
   console.log(book);
-
-  const [rating, setRating] = useState(0);
-
-  const handleFinish = () => {
-    if (!book) return;
-    markAsFinished(book, rating || 0);
-  };
 
   return (
     <div className={styles.bookContainer}>
       <div className={styles.leftSide}>
         <img src={book.formats["image/jpeg"]} alt="Book cover" />
-        <button className="button" onClick={() => addToRead(book)}>Add to read list</button>
-        <div style={{ marginTop: "1rem" }}>
-          <p>Rate this book:</p>
-          <Rating value={rating} onChange={setRating} />
-          <button className="button" onClick={handleFinish} disabled={rating === 0}>
-            Mark as Finished
-          </button>
-        </div>
+        <button className={styles.addButton} onClick={() => addToRead(book)}>
+          Add to my shelf
+        </button>
+
+        <Rating value={rating[book.id] || 0} onChange={(val) => setBookRating(book.id, val)} book={book}/>
       </div>
       <div className={styles.rightSide}>
         <h2>{book.title || "No title"}</h2>
         <p>
-          by{" "}
           {book.authors && book.authors.length > 0
             ? book.authors.map((a) => a.name).join(", ")
             : "Unknown author"}
@@ -42,7 +32,7 @@ export default function BookDetailsPage() {
         <h4>Category:</h4>
         <div className={styles.categoryContainer}>
           {book.bookshelves.map((i) => (
-            <span key={i}className={styles.categorySpan}>
+            <span key={i} className={styles.categorySpan}>
               {i.replace("Category: ", "")}
             </span>
           ))}
@@ -53,16 +43,24 @@ export default function BookDetailsPage() {
             ""
           )}
         </p>
-        <p>Downloaded: {book.download_count} times</p>
-        <p>
-          Language:{" "}
-          {book.languages.map((lang, i) => (
-            <span key={i}>{lang} </span>
-          ))}
-        </p>
-
-        <a href={book.formats["text/html"]} target="blank">
-          Read the book online:{" "}
+        <div className={styles.additionalInfo}>
+          <div className={styles.info}>
+            <p className={styles.subtitle}>Download count</p>
+            <p>{book.download_count}</p>
+          </div>
+          <div className={styles.info}>
+            <p className={styles.subtitle}>Language</p>
+            {book.languages.map((lang, i) => (
+              <p key={i}>{lang} </p>
+            ))}
+          </div>
+        </div>
+        <a
+          className={styles.externalLink}
+          href={book.formats["text/html"]}
+          target="blank"
+        >
+          Read the book online <FiExternalLink />
         </a>
       </div>
     </div>

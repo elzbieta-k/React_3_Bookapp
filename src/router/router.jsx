@@ -7,7 +7,6 @@ import HomePage from "../pages/HomePage.jsx";
 import BookDetailsPage from "../pages/BookDetailsPage.jsx";
 import FinishedBooksPage from "../pages/FinishedBooksPage.jsx";
 import SearchPage from "../pages/SearchPage.jsx";
-import CategoryPage from "../pages/CategoryPage.jsx";
 
 const router = createBrowserRouter(
   [
@@ -19,10 +18,6 @@ const router = createBrowserRouter(
         {
           index: true,
           element: <HomePage />,
-        },
-        {
-          path: "category/:topic",
-          element: <CategoryPage />,
         },
         {
           path: "search",
