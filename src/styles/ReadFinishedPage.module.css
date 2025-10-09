@@ -1,14 +1,28 @@
 .bookContainer {
-    width: 17vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+  width: 17rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+  background-color: rgba(0, 0, 0, 0.197);
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 0 10px black;
+  margin: 0.5% 1%;
 }
 
 .listContainer {
-    padding: 3vw;
-    display: flex;
-    gap: 1%;
-    flex-wrap: wrap;
+  /* padding: 3vw; */
+  display: flex;
+  gap: 1%;
+  flex-wrap: wrap;
+}
+
+.readFinishedListContainer {
+  max-width: 85vw;
+  margin: 0 auto;
+}
+
+.readFinishedListContainer h2{
+  padding: 1%;
 }

@@ -6,6 +6,9 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 17px
+}
 :root {
   background-color: #7a9cc6;
   color: #292f36;
@@ -27,3 +30,14 @@
   cursor: not-allowed;
 }
 
+@media(max-width: 600px) {
+  html {
+  font-size: 15px
+}
+}
+
+@media(max-width: 450px) {
+  html {
+  font-size: 13px
+}
+}

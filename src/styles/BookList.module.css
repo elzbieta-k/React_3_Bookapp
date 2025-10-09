@@ -1,3 +1,8 @@
+main {
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
 .bookListMain {
   display: flex;
   flex-direction: column;
@@ -6,8 +11,6 @@
 }
 
 .loadingImg {
-  /* height: 10%;
-  width: 10%; */
   position: fixed;
   top: 50%;
   left: 50%;

@@ -18,8 +18,9 @@ export default function BookSwiper({ books, title }) {
         spaceBetween={16}
         slidesPerView={3}
         breakpoints={{
+          360: { slidesPerView: 2 },
           640: { slidesPerView: 3 },
-          1024: { slidesPerView: 6 },
+          1024: { slidesPerView: 5 },
         }}
       >
         {books.map((book) => (

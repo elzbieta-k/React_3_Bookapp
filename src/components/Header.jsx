@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "../styles/Header.module.css";
+import { GiBookshelf } from "react-icons/gi";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -47,8 +48,8 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <nav>
-        <Link className={styles.navLink} to="/">
-          Home
+        <Link className={styles.bookifyLogo} to="/">
+          <GiBookshelf className={styles.bookIcon}/> Bookify
         </Link>
 
         <form role="search" onSubmit={handleSearch}>

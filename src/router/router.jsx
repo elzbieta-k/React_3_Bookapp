@@ -7,13 +7,14 @@ import HomePage from "../pages/HomePage.jsx";
 import BookDetailsPage from "../pages/BookDetailsPage.jsx";
 import FinishedBooksPage from "../pages/FinishedBooksPage.jsx";
 import SearchPage from "../pages/SearchPage.jsx";
+import ErrorPage from "../pages/ErrorPage.jsx";
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
       element: <App />,
-      errorElement: <p>error</p>,
+      errorElement: <ErrorPage />,
       children: [
         {
           index: true,
@@ -39,7 +40,7 @@ const router = createBrowserRouter(
     },
     {
       path: "*",
-      element: <p>404 page not found</p>,
+      element: <ErrorPage />,
     },
   ],
   { basename: import.meta.env.BASE_URL }

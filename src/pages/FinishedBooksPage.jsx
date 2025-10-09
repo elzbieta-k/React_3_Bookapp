@@ -6,21 +6,24 @@ export default function FinishedBooksPage() {
   const { finished, deleteBook } = useBooks();
 
   return (
-    <div className={styles.listContainer}>
-      {finished.map((book) => (
-        <div className={styles.bookContainer}>
-          <BookCard key={book.id} book={book} />
-          <span>
-            My review: {book.rating ? "⭐".repeat(book.rating) : "No rating"}
-          </span>
-          <button
-            className="button"
-            onClick={() => deleteBook(book.id, "finished")}
-          >
-            Delete
-          </button>
-        </div>
-      ))}
-    </div>
+    <section className={styles.readFinishedListContainer}>
+      <h2>Read & Rate</h2>
+      <div className={styles.listContainer}>
+        {finished.map((book) => (
+          <div className={styles.bookContainer}>
+            <BookCard key={book.id} book={book} />
+            <span>
+              My review: {book.rating ? "⭐".repeat(book.rating) : "No rating"}
+            </span>
+            <button
+              className="button"
+              onClick={() => deleteBook(book.id, "finished")}
+            >
+              Delete
+            </button>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

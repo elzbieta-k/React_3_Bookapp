@@ -41,7 +41,7 @@ export default function BookList({ fetchUrl, title }) {
     fetchData();
   }, [currentUrl]);
 
-  // if (loading) return <p>loading</p>;
+
   return (
     <main>
       <div className={styles.bookListMain}>

@@ -1,15 +1,26 @@
 .header {
-  width: 90vw;
+  width: 85vw;
   margin: 2% auto;
-  height: 10vh;
+  min-height: 10vh;
 }
 
+.bookifyLogo {
+  align-items: end;
+  display: inline-flex;
+  text-decoration: none;
+  color: #292f36;
+  font-size: 1.8rem;
+  grid-area: home;
+}
+.bookIcon {
+  font-size: 2.5rem;
+  
+}
 nav {
   display: grid;
   width: 100%;
   grid-template-areas: "home search search search lists";
   grid-template-rows: 2.5rem 1fr;
-  align-items: center;
 }
 
 .navLink {
@@ -17,6 +28,9 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   color: #292f36;
+  align-items: center;
+  display: inline-flex;
+   align-items: center;
 }
 
 form {
@@ -65,4 +79,31 @@ input {
   flex-direction: row;
   justify-content: flex-end;
   gap: 10%;
+}
+
+@media(max-width: 1220px) {
+  nav {
+  
+  grid-template-areas: 
+  "home home lists lists"
+  "search search search search";
+  grid-template-rows: 2.5rem 1fr;
+  row-gap: 3vh;
+}
+
+input {
+  width: 50vw;
+}
+
+}
+
+@media(max-width: 650px) {
+
+
+input {
+  width: 50vw;
+}
+form {
+  justify-content: flex-start;
+}
 }
