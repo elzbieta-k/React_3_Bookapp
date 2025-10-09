@@ -41,16 +41,11 @@ export default function BookList({ fetchUrl, title }) {
     fetchData();
   }, [currentUrl]);
 
-
   return (
     <main>
       <div className={styles.bookListMain}>
         {loading ? (
-          <img
-            className={styles.loadingImg}
-            src={`${import.meta.env.BASE_URL}/loading.png`}
-            alt="Loading image"
-          />
+          <span className={styles.loader}></span>
         ) : (
           <>
             <BookSwiper books={books} title={title} />
