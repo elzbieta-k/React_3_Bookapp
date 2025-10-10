@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useBooks } from "../context/BooksContext.jsx";
 import Rating from "../components/Rating.jsx";
@@ -6,9 +6,12 @@ import styles from "../styles/BookDetailsPage.module.css";
 import { FiExternalLink } from "react-icons/fi";
 
 export default function BookDetailsPage() {
-  // const { bookId } = useParams();
+  const navigate = useNavigate()
   const location = useLocation();
-  const { addToRead, handleFinish, rating, setBookRating } = useBooks();
+  const from = location.state?.from || "/"
+
+  const { addToRead, rating, setBookRating } = useBooks();
+
   const book = location.state?.book;
   console.log(book);
 
@@ -63,6 +66,7 @@ export default function BookDetailsPage() {
           Read the book online <FiExternalLink />
         </a>
       </div>
+      <button className={styles.goBackButton}onClick={() => navigate(from)}>Back to list</button>
     </div>
   );
 }

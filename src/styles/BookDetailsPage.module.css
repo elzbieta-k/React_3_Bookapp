@@ -8,6 +8,7 @@
   min-height: 70vh;
   width: 90vw;
   margin: 0 auto 3% auto;
+  position: relative;
 }
 
 .addButton {
@@ -90,4 +91,17 @@
   .bookContainer {
     flex-direction: column;
   }
+}
+
+.goBackButton {
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  padding: 1% 2%;
+  font-family: "Lexend Deca", sans-serif;
+  color: #292f36;
+  background-color: #fc9e5bc0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

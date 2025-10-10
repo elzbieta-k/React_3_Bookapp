@@ -10,12 +10,6 @@ main {
   margin: 0 auto;
 }
 
-.loadingImg {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 .buttonsContainer {
   display: flex;
@@ -23,6 +17,8 @@ main {
   gap: 1%;
 }
 
+
+/* https://cssloaders.github.io/ */
 .loader {
   font-size: 2rem;
   width: 1em;
