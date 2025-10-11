@@ -14,7 +14,6 @@
 }
 .bookIcon {
   font-size: 2.5rem;
-  
 }
 nav {
   display: grid;
@@ -30,7 +29,7 @@ nav {
   color: #292f36;
   align-items: center;
   display: inline-flex;
-   align-items: center;
+  align-items: center;
 }
 
 form {
@@ -48,6 +47,10 @@ form {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.searchButton:hover {
+  background-color: #fc9e5b;
 }
 .listsContainer {
   grid-area: lists;
@@ -71,7 +74,7 @@ input {
   border-radius: 0 6px 6px 0;
   font-family: "Lexend Deca", sans-serif;
   margin-right: 1%;
-  width: 35vw;
+  width: 30vw;
 }
 
 .listsContainer {
@@ -81,29 +84,25 @@ input {
   gap: 10%;
 }
 
-@media(max-width: 1220px) {
+@media (max-width: 1220px) {
   nav {
-  
-  grid-template-areas: 
-  "home home lists lists"
-  "search search search search";
-  grid-template-rows: 2.5rem 1fr;
-  row-gap: 3vh;
+    grid-template-areas:
+      "home home lists lists"
+      "search search search search";
+    grid-template-rows: 2.5rem 1fr;
+    row-gap: 3vh;
+  }
+
+  input {
+    width: 50vw;
+  }
 }
 
-input {
-  width: 50vw;
-}
-
-}
-
-@media(max-width: 650px) {
-
-
-input {
-  width: 50vw;
-}
-form {
-  justify-content: flex-start;
-}
+@media (max-width: 650px) {
+  input {
+    width: 50vw;
+  }
+  form {
+    justify-content: flex-start;
+  }
 }

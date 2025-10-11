@@ -10,15 +10,12 @@ main {
   margin: 0 auto;
 }
 
-
 .buttonsContainer {
   display: flex;
   justify-content: center;
   gap: 1%;
 }
 
-
-/* https://cssloaders.github.io/ */
 .loader {
   font-size: 2rem;
   width: 1em;

@@ -23,6 +23,10 @@
   width: 80%;
 }
 
+.addButton:hover {
+  background-color: #fc9e5b;
+}
+
 .leftSide {
   display: flex;
   flex-direction: column;
@@ -87,21 +91,25 @@
   font-size: 1.5rem;
 }
 
-@media (max-width: 700px) {
-  .bookContainer {
-    flex-direction: column;
-  }
-}
-
 .goBackButton {
   position: absolute;
   top: 2%;
   right: 1%;
-  padding: 1% 2%;
+  padding: 1% 1%;
   font-family: "Lexend Deca", sans-serif;
   color: #292f36;
-  background-color: #fc9e5bc0;
+  background-color: #fc9e5b8f;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.goBackButton:hover {
+  background-color: #fc9e5b;
+}
+
+@media (max-width: 700px) {
+  .bookContainer {
+    flex-direction: column;
+  }
 }

@@ -1,0 +1,34 @@
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+  color: #292f36;
+  padding: 2rem;
+}
+
+.errorContainer h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.errorContainer p {
+    margin-bottom: 1.5rem;
+}
+.homeButton {
+  padding: 0 3%;
+  font-family: "Lexend Deca", sans-serif;
+  color: #292f36;
+  background-color: #fc9e5bc0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
+}
+
+.homeButton:hover {
+  background-color: #fc9e5b;
+}

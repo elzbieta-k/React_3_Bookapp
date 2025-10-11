@@ -14,8 +14,12 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
- height: 30px;
- width: 80%;
+  height: 30px;
+  width: 80%;
+}
+
+.addButton:hover {
+  background-color: #fc9e5b;
 }
 
 .addButton:disabled {
