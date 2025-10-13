@@ -25,15 +25,16 @@ export default function BookList({ fetchUrl, title }) {
         }
 
         const result = await response.json();
-        console.log("API response:", result);
+        // console.log("API response:", result);
         setNextPage(result.next);
         setPrevPage(result.previous);
-        console.log("Next:", nextPage);
-        console.log("Prev:", prevPage);
+        // console.log("Next:", nextPage);
+        // console.log("Prev:", prevPage);
 
         setBooks(result.results || []);
       } catch (error) {
         setError(error.message);
+        console.log(error.message)
       } finally {
         setLoading(false);
       }
@@ -44,6 +45,7 @@ export default function BookList({ fetchUrl, title }) {
   return (
     <main>
       <div className={styles.bookListMain}>
+        {error && <p>Error: {error}</p>}
         {loading ? (
           <span className={styles.loader}></span>
         ) : (

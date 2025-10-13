@@ -9,22 +9,21 @@ export default function Header() {
   const [categoryValue, setCategoryValue] = useState("");
 
   const categories = [
-    "all",
-    "fiction",
-    "mystery",
-    "thriller",
-    "romance",
-    "fantasy",
-    "morality",
-    "society",
-    "power",
-    "justice",
-    "adventure",
-    "tragedy",
-    "war",
-    "philosophy",
+    { name: "All categories", value: "all" },
+    { name: "Fiction", value: "fiction" },
+    { name: "Mystery", value: "mystery" },
+    { name: "Thriller", value: "thriller" },
+    { name: "Romance", value: "romance" },
+    { name: "Fantasy", value: "fantasy" },
+    { name: "Morality", value: "morality" },
+    { name: "Society", value: "society" },
+    { name: "Power", value: "power" },
+    { name: "Justice", value: "justice" },
+    { name: "Adventure", value: "adventure" },
+    { name: "Tragedy", value: "tragedy" },
+    { name: "War", value: "war" },
+    { name: "Philosophy", value: "philosophy" },
   ];
-
   const handleSearch = (e) => {
     e.preventDefault();
     if (!searchValue.trim() && !categoryValue) return;
@@ -42,14 +41,14 @@ export default function Header() {
       navigate(`/search?${queryString}`);
     }
     setSearchValue("");
-    setCategoryValue("all")
+    setCategoryValue("all");
   };
 
   return (
     <header className={styles.header}>
       <nav>
         <Link className={styles.bookifyLogo} to="/">
-          <GiBookshelf className={styles.bookIcon}/> Bookify
+          <GiBookshelf className={styles.bookIcon} /> Bookify
         </Link>
 
         <form role="search" onSubmit={handleSearch}>
@@ -59,8 +58,8 @@ export default function Header() {
             onChange={(e) => setCategoryValue(e.target.value)}
           >
             {categories.map((category) => (
-              <option key={category} value={category}>
-                {category.toUpperCase()}
+              <option key={category.value} value={category.value}>
+                {category.name}
               </option>
             ))}
           </select>
