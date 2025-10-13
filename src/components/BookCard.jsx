@@ -3,6 +3,8 @@ import styles from "../styles/BookCard.module.css";
 
 export default function BookCard({ book }) {
   const location = useLocation()
+
+  
   return (
     <article className={styles.bookCard}>
       <Link 
