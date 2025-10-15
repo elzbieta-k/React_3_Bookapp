@@ -1,6 +1,6 @@
 .header {
   width: 85vw;
-  margin: 2% auto;
+  margin: 2% auto 1% auto;
   min-height: 10vh;
 }
 
@@ -64,8 +64,7 @@ form {
   border-radius: 6px;
   color: #292f36;
   cursor: pointer;
- margin-right: 1%;
-
+  margin-right: 1%;
 }
 
 input {
@@ -75,7 +74,7 @@ input {
   border-radius: 6px;
   font-family: "Lexend Deca", sans-serif;
   margin-right: 1%;
-  width: 30vw;
+  min-width: 30vw;
 }
 
 .listsContainer {
@@ -93,16 +92,13 @@ input {
     grid-template-rows: 2.5rem 1fr;
     row-gap: 3vh;
   }
-
-  input {
-    width: 50vw;
-  }
 }
 
 @media (max-width: 650px) {
-  input {
-    width: 50vw;
+  .header {
+    margin-bottom: 7%;
   }
+
   form {
     justify-content: flex-start;
   }

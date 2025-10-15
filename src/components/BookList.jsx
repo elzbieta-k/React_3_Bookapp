@@ -10,17 +10,22 @@ export default function BookList({ fetchUrl, title }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentUrl, setCurrentUrl] = useState(fetchUrl);
-  const [count, setCount] = useState(null);
+  const [count, setCount] = useState(null); //get count - all books in search
 
+  //Calculating which page and how many books is showing
   const limit = 32;
-  let start = (page - 1) * limit + 1;
-  const end = count ? Math.min(start + books.length -1, count) : start + books.length - 1;
+  const start = (page - 1) * limit + 1;
+  const end = count
+    ? Math.min(start + books.length - 1, count)
+    : start + books.length - 1;
 
+  //reset for startpunkt every time search is activated
   useEffect(() => {
     setCurrentUrl(fetchUrl);
     setPage(1);
   }, [fetchUrl]);
 
+  //fetching data
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -58,6 +63,7 @@ export default function BookList({ fetchUrl, title }) {
     setCurrentUrl(prevPage);
     setPage((prev) => prev - 1);
   };
+
   return (
     <main>
       <div className={styles.bookListMain}>
@@ -67,7 +73,7 @@ export default function BookList({ fetchUrl, title }) {
         ) : (
           <>
             <BookSwiper books={books} title={title} />
-            <p>
+            <p className={styles.showBooksDesc}>
               Showing {start}-{end} {count ? `of ${count} books` : ""}
             </p>
             <div className={styles.buttonsContainer}>
@@ -83,7 +89,11 @@ export default function BookList({ fetchUrl, title }) {
                 className="button"
                 disabled={!nextPage}
                 onClick={handleNextPage}
-                title={nextPage ? `Show ${end + 1}-${Math.min(end + limit, count)}` : ""}
+                title={
+                  nextPage
+                    ? `Show ${end + 1}-${Math.min(end + limit, count)}`
+                    : ""
+                }
               >
                 Next
               </button>

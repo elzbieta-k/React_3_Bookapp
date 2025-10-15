@@ -10,6 +10,11 @@ main {
   margin: 0 auto;
 }
 
+.showBooksDesc {
+  padding-left: 2vw;
+  padding-bottom: 10px;
+}
+
 .buttonsContainer {
   display: flex;
   justify-content: center;

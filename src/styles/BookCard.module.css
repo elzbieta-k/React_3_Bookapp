@@ -26,11 +26,11 @@
   font-size: 1.1rem;
 }
 
-h3,
-p {
+.bookCard h3,
+.bookCard p {
   padding: 0 5px;
 }
 
-p {
+.bookCard p {
   font-size: 0.9rem;
 }

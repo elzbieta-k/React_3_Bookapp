@@ -26,3 +26,9 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.ratingStars {
+  display: "flex";
+  gap: "0.25rem";
+  cursor: "pointer";
+}

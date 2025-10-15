@@ -10,8 +10,8 @@ export default function FinishedBooksPage() {
       <h2>Read & Rate</h2>
       <div className={styles.listContainer}>
         {finished.map((book) => (
-          <div className={styles.bookContainer}>
-            <BookCard key={book.id} book={book} />
+          <div key={book.id} className={styles.bookContainer}>
+            <BookCard book={book} />
             <span>
               My review: {book.rating ? "⭐".repeat(book.rating) : "No rating"}
             </span>

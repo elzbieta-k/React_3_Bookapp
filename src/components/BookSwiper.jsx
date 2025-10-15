@@ -9,6 +9,7 @@ import BookCard from "./BookCard.jsx";
 
 export default function BookSwiper({ books, title }) {
   if (!books || books.length === 0) return <p>No books found</p>;
+
   return (
     <div className={styles.swiperContainer}>
       {title && <h2>{title}</h2>}

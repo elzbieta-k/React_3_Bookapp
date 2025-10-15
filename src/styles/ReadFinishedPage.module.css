@@ -12,10 +12,11 @@
 }
 
 .listContainer {
-  /* padding: 3vw; */
   display: flex;
   gap: 1%;
   flex-wrap: wrap;
+  row-gap: 30px;
+  padding-bottom: 30px;
 }
 
 .readFinishedListContainer {
@@ -23,6 +24,6 @@
   margin: 0 auto;
 }
 
-.readFinishedListContainer h2{
+.readFinishedListContainer h2 {
   padding: 1%;
 }

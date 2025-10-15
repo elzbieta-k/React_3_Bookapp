@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useBooks } from "../context/BooksContext";
-import styles from "../styles/Rating.module.css"
+import styles from "../styles/Rating.module.css";
 
 export default function Rating({ value = 0, onChange, book }) {
   const [hover, setHover] = useState(null);
-  const { handleFinish} = useBooks();
+  const { handleFinish } = useBooks();
 
   return (
-    <div className= {styles.ratingContainer}>
+    <div className={styles.ratingContainer}>
       <p>Rate this book:</p>
-      <div style={{ display: "flex", gap: "0.25rem", cursor: "pointer" }}>
+      <div className={styles.ratingStars}>
         {[1, 2, 3, 4, 5].map((star) => (
           <span
             key={star}
@@ -25,7 +25,11 @@ export default function Rating({ value = 0, onChange, book }) {
           </span>
         ))}
       </div>
-      <button className={styles.addButton} onClick={()=> handleFinish(book)} disabled={value === 0}>
+      <button
+        className={styles.addButton}
+        onClick={() => handleFinish(book)}
+        disabled={value === 0}
+      >
         Mark as Finished
       </button>
     </div>
