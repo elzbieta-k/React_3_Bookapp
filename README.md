@@ -1,7 +1,8 @@
 # React_3_Bokapplikasjon
 
 A simple React book application that lets users browse books, add them to their shelf, rate them, and mark them as finished.
-<img width="1920" height="907" alt="screencapture-localhost-5173-React-3-Bookapp-2025-10-11-10_52_21 (1)" src="https://github.com/user-attachments/assets/0b538dfd-41dd-482c-b22c-e68726d269d1" />
+<img width="1961" height="1225" alt="Bookify" src="https://github.com/user-attachments/assets/0472dcbc-3365-4b9f-943e-8c957bb5df80" />
+
 
 ## Features
 
