@@ -24,6 +24,18 @@ export default function Header() {
     { name: "War", value: "war" },
     { name: "Philosophy", value: "philosophy" },
   ];
+
+  const handleCategoryChange = (e) => {
+    const selected = e.target.value;
+    setCategoryValue(selected)
+
+    if (selected === "all") {
+      navigate("/search");
+    } else {
+      navigate(`/search?topic=${encodeURIComponent(selected)}`)
+    }
+  };
+  
   const handleSearch = (e) => {
     e.preventDefault();
     if (!searchValue.trim() && !categoryValue) return;
@@ -41,7 +53,7 @@ export default function Header() {
       navigate(`/search?${queryString}`);
     }
     setSearchValue("");
-    setCategoryValue("all");
+    // setCategoryValue("all");
   };
 
   return (
@@ -55,7 +67,7 @@ export default function Header() {
           <select
             className={styles.categoryButton}
             value={categoryValue}
-            onChange={(e) => setCategoryValue(e.target.value)}
+            onChange={handleCategoryChange}
           >
             {categories.map((category) => (
               <option key={category.value} value={category.value}>
