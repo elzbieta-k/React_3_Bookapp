@@ -30,7 +30,7 @@ export default function Rating({ value = 0, onChange, book }) {
         onClick={() => handleFinish(book)}
         disabled={value === 0}
       >
-        Mark as Finished
+        Mark as finished
       </button>
     </div>
   );
