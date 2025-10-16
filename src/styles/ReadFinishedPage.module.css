@@ -4,11 +4,12 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding-bottom: 4px;
+  padding-bottom: 10px;
   background-color: rgba(0, 0, 0, 0.197);
   border-radius: 0 0 5px 5px;
   box-shadow: 0 0 10px black;
   margin: 0.5% 1%;
+  position: relative;
 }
 
 .listContainer {
@@ -26,4 +27,8 @@
 
 .readFinishedListContainer h2 {
   padding: 1%;
+}
+
+.ratingStars {
+  padding: 10px;
 }

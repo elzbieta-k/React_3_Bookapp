@@ -1,0 +1,12 @@
+.deleteBtn {
+  padding: 1% 3%;
+  font-family: "Lexend Deca", sans-serif;
+  color: #292f36;
+  background-color: #fc9e5b;
+  border: none;
+  border-radius: 3px;
+}
+.deleteBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -78,7 +78,7 @@ export default function BookList({ fetchUrl, title }) {
             </p>
             <div className={styles.buttonsContainer}>
               <button
-                className="button"
+                className={styles.showPageBtn}
                 disabled={!prevPage}
                 onClick={handlePrevPage}
                 title={prevPage ? `Show ${start - limit}-${start - 1}` : ""}
@@ -86,7 +86,7 @@ export default function BookList({ fetchUrl, title }) {
                 Prev
               </button>
               <button
-                className="button"
+                className={styles.showPageBtn}
                 disabled={!nextPage}
                 onClick={handleNextPage}
                 title={

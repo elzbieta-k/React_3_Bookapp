@@ -34,3 +34,12 @@
 .bookCard p {
   font-size: 0.9rem;
 }
+
+@media (max-width: 400px) {
+  .bookCard {
+    height: 328px;
+  }
+  .bookCard img {
+    height: 264px;
+  }
+}

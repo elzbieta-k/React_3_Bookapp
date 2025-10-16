@@ -1,5 +1,6 @@
 .header {
   width: 85vw;
+  max-width: 1365px;
   margin: 2% auto 1% auto;
   min-height: 10vh;
 }

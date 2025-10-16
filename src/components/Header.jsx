@@ -27,15 +27,15 @@ export default function Header() {
 
   const handleCategoryChange = (e) => {
     const selected = e.target.value;
-    setCategoryValue(selected)
+    setCategoryValue(selected);
 
     if (selected === "all") {
       navigate("/search");
     } else {
-      navigate(`/search?topic=${encodeURIComponent(selected)}`)
+      navigate(`/search?topic=${encodeURIComponent(selected)}`);
     }
   };
-  
+
   const handleSearch = (e) => {
     e.preventDefault();
     if (!searchValue.trim() && !categoryValue) return;
@@ -53,13 +53,17 @@ export default function Header() {
       navigate(`/search?${queryString}`);
     }
     setSearchValue("");
-    // setCategoryValue("all");
+    
   };
 
   return (
     <header className={styles.header}>
       <nav>
-        <Link className={styles.bookifyLogo} to="/">
+        <Link
+          className={styles.bookifyLogo}
+          to="/"
+          onClick={() => setCategoryValue("all")}
+        >
           <GiBookshelf className={styles.bookIcon} /> Bookify
         </Link>
 
