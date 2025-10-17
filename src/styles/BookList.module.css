@@ -23,7 +23,6 @@ main {
 }
 
 .showPageBtn {
-  
   padding: 1% 3%;
   font-family: "Lexend Deca", sans-serif;
   color: #292f36;
@@ -31,13 +30,16 @@ main {
   border: none;
   border-radius: 5px;
   cursor: pointer;
- 
+  transition: all 0.3s;
 }
 .showPageBtn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
+.showPageBtn:hover {
+  background-color: #fc9e5b;
+}
 
 .loader {
   font-size: 2rem;
@@ -53,7 +55,6 @@ main {
   animation: mulShdSpin 1.1s infinite ease;
   transform: translateZ(0);
 }
-
 
 @keyframes mulShdSpin {
   0%,
