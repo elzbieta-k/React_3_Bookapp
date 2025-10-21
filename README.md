@@ -1,74 +1,74 @@
-# React_3_Bokapplikasjon
+# React_3_Bokapplikasjon - Bookify
 
-A simple React book application that lets users browse books, add them to their shelf, rate them, and mark them as finished.
+
+A small React app to browse books, add them to a personal "To Read" shelf, rate them, and mark them as finished. State persists in localStorage.
 <img width="1961" height="1225" alt="Bookify" src="https://github.com/user-attachments/assets/0472dcbc-3365-4b9f-943e-8c957bb5df80" />
 
 
 ## Features
+- Browse and view book details
+- Add books to a "To Read" shelf
+- Per-book star rating (1–5)
+- Mark books as finished (moves from To Read → Finished with saved rating)
+- Delete books from either list
+- Persistent data via localStorage
+- Basic client-side routing with React Router
 
-- Browse book details
-- Add books to your "To Read" shelf
-- Rate books with stars
-- Mark books as finished
-- Remove books from either shelf
-- Persistent state using local storage
+## Project structure
+src/
+- components/      — UI components (BookCard, BookDialog, Rating, DeleteButton, etc.)
+- context/         — BooksContext (shelf, finished, ratings, handlers)
+- hooks/           — useLocalStorage
+- pages/           — HomePage, SearchPage, ToReadPage, FinishedBooksPage, BookDetailsPage
+- router/          — app router
+- styles/          — CSS modules
+- App.jsx, index.jsx
 
-## Getting Started
+## Prerequisites
+- Node.js (recommended >= 18)
+- npm (or pnpm/yarn)
 
-### Prerequisites
+## Install
+```
+npm install
+```
 
-- Node.js (v18 or newer recommended)
-- npm (comes with Node.js)
-
-### Installation
-
-1. Clone the repository:
-
-   ```
-   git clone https://github.com/yourusername/React_3_Bokapplikasjon.git
-   cd React_3_Bokapplikasjon
-   ```
-
-2. Install dependencies:
-
-   ```
-   npm install
-   ```
-
-### Running the App
-
-Start the development server:
-
+## Run (dev)
 ```
 npm start
 ```
+Open http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Project Structure
-
-```
-src/
-  components/      # Reusable UI components (BookDetails, Rating, etc.)
-  context/         # React context for managing books and ratings
-  hooks/           # Custom hooks (e.g., useLocalStorage)
-  pages/           # Application pages (BookDetailsPage, etc.)
-  styles/          # CSS modules for styling
-  App.jsx          # Main app component
-  index.js         # Entry point
-```
+## Routes
+- /           — Home (book lists)
+- /search     — Search page
+- /toread     — My Shelf (To Read)
+- /finished   — Finished books
 
 ## Usage
+- Click a book card to open the dialog with details.
+- Click "Add to my shelf" to add to To Read.
+- Select stars to rate a book; then click "Mark as finished" to move it to Finished with the rating saved.
+- Use the delete button to remove items from either list.
 
-- Click on a book to view details.
-- Use "Add to my shelf" to add a book to your reading list.
-- Rate a book using the star rating component.
-- Mark a book as finished once you've rated it.
-- Remove books from your shelf or finished list.
+## Important implementation notes / common fixes
+- Ratings are stored per book as an object keyed by book ID (e.g. { [bookId]: rating }). Use a setter like `setBookRating(bookId, value)` in context and read `ratings[book.id] || 0` in the Rating component to avoid showing the last-chosen rating for other books.
+- Ensure `handleFinish(book)` reads the per-book rating before moving a book to finished.
+- To close a dialog when clicking outside, attach a ref to the dialog root and install a `mousedown` listener while the dialog is open. Check `if (!dialogRef.current.contains(e.target)) onClose()` to avoid closing when clicking inside.
+- When mapping lists in pages, place `key={book.id}` on the outer container element and pass handlers (e.g. `onClick`) explicitly to the card component.
+
+## Debugging tips
+- If "Add to my shelf" does nothing, ensure the book object is present (e.g. via router `navigate('/book/ID', { state: { book } })`) or add a fallback that loads book data by id.
+- If "Mark as finished" doesn't attach the rating, confirm the context exports `ratings` and `setBookRating` and that components use those names consistently.
+
+## Testing
+No automated tests included. To add tests, scaffold with Jest + React Testing Library and create tests for:
+- BooksContext handlers
+- Rating component behavior
+- BookDialog open/close behavior
 
 ## Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+PRs welcome. Open an issue to discuss larger changes first.
 
 ## Acknowledgments
 Kodehode/Jobloop for the Coding Bootcamp
