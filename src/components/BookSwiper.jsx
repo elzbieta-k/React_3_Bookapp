@@ -4,10 +4,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styles from "../styles/BookSwiper.module.css";
-
 import BookCard from "./BookCard.jsx";
 
-export default function BookSwiper({ books, title }) {
+export default function BookSwiper({ books, title, onBookClick }) {
   if (!books || books.length === 0) return <p>No books found</p>;
 
   return (
@@ -15,7 +14,7 @@ export default function BookSwiper({ books, title }) {
       {title && <h2>{title}</h2>}
       <Swiper
         modules={[Navigation]}
-        navigation
+        // navigation
         spaceBetween={16}
         slidesPerView={3}
         breakpoints={{
@@ -26,7 +25,7 @@ export default function BookSwiper({ books, title }) {
       >
         {books.map((book) => (
           <SwiperSlide key={book.id}>
-            <BookCard book={book} />
+            <BookCard book={book} onClick={onBookClick}/>
           </SwiperSlide>
         ))}
       </Swiper>

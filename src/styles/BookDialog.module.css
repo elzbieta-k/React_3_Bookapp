@@ -1,3 +1,17 @@
+.dialog {
+  width: 90vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #292f36;
+}
+
+::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
 .bookContainer {
   display: flex;
   flex-direction: row;
@@ -5,9 +19,8 @@
   padding: 2%;
   border-radius: 3px;
   box-shadow: 0 0 10px #292f36;
-  min-height: 70vh;
-  width: 90vw;
-  margin: 0 auto 3% auto;
+  height: 100%;
+  width: 100%;
   position: relative;
 }
 
@@ -105,7 +118,6 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-
 
 .goBackButton:hover {
   background-color: #fc9e5b;

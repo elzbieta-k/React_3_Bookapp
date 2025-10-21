@@ -2,9 +2,15 @@ import { useBooks } from "../context/BooksContext";
 import BookCard from "../components/BookCard";
 import DeleteButton from "../components/DeleteButton";
 import styles from "../styles/ReadFinishedPage.module.css";
+import BookDialog from "../components/BookDialog";
 
 export default function FinishedBooksPage() {
-  const { finished, deleteBook } = useBooks();
+  const {
+    finished,
+    selectedBook,
+    handleBookClick,
+    handleCloseDialog,
+  } = useBooks();
 
   return (
     <section className={styles.readFinishedListContainer}>
@@ -12,20 +18,15 @@ export default function FinishedBooksPage() {
       <div className={styles.listContainer}>
         {finished.map((book) => (
           <div key={book.id} className={styles.bookContainer}>
-            <BookCard book={book} />
+            <BookCard book={book} onClick={handleBookClick}/>
             <span className={styles.ratingStars}>
               My review: {book.rating ? "⭐".repeat(book.rating) : "No rating"}
             </span>
-            <DeleteButton  bookId={book.id} listName="finished" />
-            {/* <button
-              className={styles.deleteBtn}
-              onClick={() => deleteBook(book.id, "finished")}
-            >
-              X
-            </button> */}
+            <DeleteButton bookId={book.id} listName="finished" />
           </div>
         ))}
       </div>
+      <BookDialog book={selectedBook} onClose={handleCloseDialog} />
     </section>
   );
 }

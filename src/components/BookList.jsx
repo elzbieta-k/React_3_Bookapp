@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/BookList.module.css";
 import BookSwiper from "./BookSwiper.jsx";
+import BookDialog from "./BookDialog.jsx";
+import { useBooks } from "../context/BooksContext.jsx";
 
 export default function BookList({ fetchUrl, title }) {
   const [books, setBooks] = useState([]);
@@ -11,6 +13,7 @@ export default function BookList({ fetchUrl, title }) {
   const [error, setError] = useState(null);
   const [currentUrl, setCurrentUrl] = useState(fetchUrl);
   const [count, setCount] = useState(null); //get count - all books in search
+  const { selectedBook, handleBookClick, handleCloseDialog } = useBooks();
 
   //Calculating which page and how many books is showing
   const limit = 32;
@@ -72,7 +75,11 @@ export default function BookList({ fetchUrl, title }) {
           <span className={styles.loader}></span>
         ) : (
           <>
-            <BookSwiper books={books} title={title} />
+            <BookSwiper
+              books={books}
+              title={title}
+              onBookClick={handleBookClick}
+            />
             <p className={styles.showBooksDesc}>
               Showing {start}-{end} {count ? `of ${count} books` : ""}
             </p>
@@ -98,6 +105,7 @@ export default function BookList({ fetchUrl, title }) {
                 Next
               </button>
             </div>
+            <BookDialog book={selectedBook} onClose={handleCloseDialog} />
           </>
         )}
       </div>

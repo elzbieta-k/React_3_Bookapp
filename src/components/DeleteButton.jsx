@@ -8,7 +8,7 @@ export default function DeleteButton({ bookId, listName }) {
       className={styles.deleteBtn}
       onClick={() => deleteBook(bookId, listName)}
     >
-      Delete
+      Remove
     </button>
   );
 }

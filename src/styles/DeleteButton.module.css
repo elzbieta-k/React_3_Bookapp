@@ -5,6 +5,7 @@
   background-color: #fc9e5b;
   border: none;
   border-radius: 3px;
+  cursor: pointer;
 }
 .deleteBtn:disabled {
   opacity: 0.5;

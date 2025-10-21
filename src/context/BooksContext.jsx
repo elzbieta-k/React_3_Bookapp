@@ -8,6 +8,15 @@ export const BooksProvider = ({ children }) => {
   const [finished, setFinished] = useLocaleStorage("finished", []);
   const [rating, setRating] = useState({});
 
+  const [selectedBook, setSelectedBook] = useState(null);
+   const handleBookClick = (book) => {
+    setSelectedBook(book);
+  };
+
+  const handleCloseDialog = () => {
+    setSelectedBook(null);
+  };
+
   const addToRead = (book) => {
     setToRead((prev) => {
       //checks if a book already is added
@@ -48,6 +57,10 @@ export const BooksProvider = ({ children }) => {
         toRead,
         finished,
         rating,
+        selectedBook,
+        setSelectedBook,
+        handleBookClick,
+        handleCloseDialog,
         setRating,
         addToRead,
         setBookRating,
